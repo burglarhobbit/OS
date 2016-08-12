@@ -1,0 +1,20 @@
+IMPORTANT THINGS:
+
+echo:
+	with ' and "
+	escape chars like \
+
+redirection in cat:
+	of output/input redirection
+	OUTPUT:
+		> replaces the content of te destination file
+		>> appends the content of the destination file
+	INPUT:
+		< reads from keyboard
+
+;; (double semicolons for case ends, 1 for the line, other for the case)
+
+3 types of devices in Unix:
+	input
+	output
+	error

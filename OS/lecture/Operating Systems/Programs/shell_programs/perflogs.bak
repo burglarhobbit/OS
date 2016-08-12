@@ -1,0 +1,19 @@
+#! /bin/sh
+# This script is written by Sanjay Chaudhary, 
+# Date written
+# This script will generate iostat, vmstat and sar results and
+# will be stored in /usr/local/perflogs
+# This scripts is to be executed as a part of cron every half and hour
+
+TZ=US/Eastern
+export TZ
+
+MONTH=`date +%m`
+YEAR=`date +%y`
+DATE=`date +%d`
+HOUR=`date +%H`
+MINUTE=`date +%M`
+
+echo >> /export/home/sanjay/log
+echo >> /export/home/sanjay/log
+echo "At the time : $MONTH-$DATE-$YEAR-$HOUR-$MINUTE" >> /export/home/sanjay/log
