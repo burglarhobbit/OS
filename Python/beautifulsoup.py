@@ -1,0 +1,36 @@
+from bs4 import BeautifulSoup as BS
+import urllib
+import json
+import os
+import time
+
+a = 1
+b = 400
+
+my_url = 'https://www.instagram.com/p/BJQJf0pBBY1/'
+
+r = urllib.urlopen(my_url).read()
+
+soup = BS(r,"html.parser")
+js = soup.find_all('script',type="text/javascript")[4].string
+jsonValue = '{%s}' % (js.split('{', 1)[1].rsplit('}', 1)[0],)
+value = json.loads(jsonValue)
+
+last_comment = value['entry_data']['PostPage'][0]['media']['comments']['nodes'][-1]['text']
+while True:
+	r = urllib.urlopen(my_url).read()
+
+	soup = BS(r,"html.parser")
+	js = soup.find_all('script',type="text/javascript")[4].string
+
+	jsonValue = '{%s}' % (js.split('{', 1)[1].rsplit('}', 1)[0],)
+	value = json.loads(jsonValue)
+
+	new_comment = value['entry_data']['PostPage'][0]['media']['comments']['nodes'][-1]['text']
+
+	if new_comment != last_comment:
+		for i in range(3):
+			os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (a, b))
+			time.sleep(1)
+		last_comment = new_comment
+		print new_comment
