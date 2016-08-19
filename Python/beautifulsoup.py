@@ -3,6 +3,7 @@ import urllib
 import json
 import os
 import time
+import platform
 
 a = 1
 b = 400
@@ -30,7 +31,11 @@ while True:
 
 	if new_comment != last_comment:
 		for i in range(3):
-			os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (a, b))
+			if platform.system() == 'Linux':
+				os.system('play --no-show-progress --null --channels 1 synth %s sine %f' % (a, b))
+			elif platform.system() == 'Windows':
+				import winsound
+				winsound.Beep(b,a*1000)
 			time.sleep(1)
 		last_comment = new_comment
 		print new_comment
