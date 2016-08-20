@@ -39,4 +39,7 @@ while True:
 				winsound.Beep(b,a*1000)
 			time.sleep(1)
 		last_comment = new_comment # Resetting last comment as new comment for and the cycle continues
-		print new_comment
+		try:
+			print new_comment
+		except Exception as e:
+			pass
